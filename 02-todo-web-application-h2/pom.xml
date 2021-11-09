@@ -88,12 +88,41 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
-<!-- 		<plugin>
+			<plugin>
 				<groupId>com.microsoft.azure</groupId>
 				<artifactId>azure-webapp-maven-plugin</artifactId>
-				<version>1.7.0</version>
-			</plugin>-->
+				<version>2.2.0</version>
+				<configuration>
+					<schemaVersion>v2</schemaVersion>
+					<subscriptionId>87d3cc45-fd8d-4c85-9bc5-234cf023107a</subscriptionId>
+					<resourceGroup>nsAzureRG</resourceGroup>
+					<appName>02-todo-web-application-h2</appName>
+					<pricingTier>B1</pricingTier>
+					<region>westeurope</region>
+					<appSettings>
+						<property>
+							<name>JAVA_OPTS</name>
+							<value>-Dserver.port=80</value>
+						</property>
+					</appSettings>
+					<runtime>
+						<os>Linux</os>
+						<javaVersion>Java 11</javaVersion>
+						<webContainer>Tomcat 9.0</webContainer>
+					</runtime>
+					<deployment>
+						<resources>
+							<resource>
+								<directory>${project.basedir}/target</directory>
+								<includes>
+									<include>*.war</include>
+								</includes>
+							</resource>
+						</resources>
+					</deployment>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 	<repositories>
 		<repository>
